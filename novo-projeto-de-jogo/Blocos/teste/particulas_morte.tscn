@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxsolbcha7rvn"]
+
+[ext_resource type="Texture2D" uid="uid://cyia0gfp1n1i1" path="res://sprite/particula0.png" id="1_8gnij"]
+[ext_resource type="Material" uid="uid://07of2qmk51fm" path="res://Blocos/teste/morteParticulas.tres" id="2_pf3ow"]
+
+[node name="ParticulasMorte" type="GPUParticles2D"]
+emitting = false
+amount = 60
+texture = ExtResource("1_8gnij")
+lifetime = 2.3099999999999996
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+process_material = ExtResource("2_pf3ow")

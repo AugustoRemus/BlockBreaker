@@ -1,0 +1,77 @@
+[gd_scene load_steps=13 format=3 uid="uid://3feieucapg6y"]
+
+[ext_resource type="Script" uid="uid://bva6xhqikxxfx" path="res://Blocos/BolaManager.gd" id="1_dqgup"]
+[ext_resource type="Texture2D" uid="uid://cagg4abg1srv8" path="res://sprite/bloco 0.png" id="1_p2e61"]
+[ext_resource type="Script" uid="uid://cbtwwc1lju2dn" path="res://Blocos/clicação.gd" id="2_b0i1j"]
+[ext_resource type="Script" uid="uid://dhnscolg0ngsh" path="res://Blocos/vida.gd" id="3_jupsf"]
+[ext_resource type="Script" uid="uid://d12hccop4lsvr" path="res://Blocos/sons.gd" id="4_d760c"]
+[ext_resource type="PackedScene" uid="uid://pb11wtln8gx1" path="res://Blocos/somBola/BarulhoBola.tscn" id="5_scd2b"]
+[ext_resource type="PackedScene" uid="uid://bp4q7466jgakd" path="res://Blocos/somMorte/SomMorteCena.tscn" id="7_20grr"]
+[ext_resource type="PackedScene" uid="uid://c2bwbvkwscn1u" path="res://Blocos/teste/particula_cene.tscn" id="9_a1oko"]
+[ext_resource type="PackedScene" uid="uid://bxsolbcha7rvn" path="res://Blocos/teste/particulas_morte.tscn" id="10_e88gi"]
+[ext_resource type="Script" uid="uid://dhy3lrr3fllsj" path="res://Blocos/particulas.gd" id="10_rwgl2"]
+[ext_resource type="Script" uid="uid://daqq1p8nj2s3m" path="res://Blocos/morte_handler.gd" id="11_e88gi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0i1j"]
+size = Vector2(16, 16)
+
+[node name="Caixa" type="RigidBody2D" node_paths=PackedStringArray("sprite", "colisao")]
+scale = Vector2(3.395, 3.395)
+script = ExtResource("1_dqgup")
+sprite = NodePath("Sprite")
+colisao = NodePath("colisao")
+
+[node name="colisao" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b0i1j")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_p2e61")
+
+[node name="areaClicada" type="Area2D" parent="."]
+script = ExtResource("2_b0i1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaClicada"]
+shape = SubResource("RectangleShape2D_b0i1j")
+
+[node name="labelVida" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 24.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_vertical = 1
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="vida" type="Node" parent="." node_paths=PackedStringArray("labelVida")]
+script = ExtResource("3_jupsf")
+labelVida = NodePath("../labelVida")
+
+[node name="Sons" type="Node" parent="."]
+script = ExtResource("4_d760c")
+barulhoDano = ExtResource("5_scd2b")
+barulhoMorte = ExtResource("7_20grr")
+
+[node name="particulas" type="Node2D" parent="."]
+script = ExtResource("10_rwgl2")
+particulasGerado = ExtResource("9_a1oko")
+particulasMortes = ExtResource("10_e88gi")
+
+[node name="morteHandler" type="Node" parent="."]
+script = ExtResource("11_e88gi")
+
+[connection signal="clicado" from="areaClicada" to="vida" method="_on_area_clicada_clicado"]
+[connection signal="input_event" from="areaClicada" to="areaClicada" method="_on_input_event"]
+[connection signal="dano" from="vida" to="Sons" method="_on_vida_dano"]
+[connection signal="dano" from="vida" to="particulas" method="_on_vida_dano"]
+[connection signal="morri" from="vida" to="Sons" method="_on_vida_morri"]
+[connection signal="morri" from="vida" to="particulas" method="_on_vida_morri"]
+[connection signal="morri" from="vida" to="morteHandler" method="_on_vida_morri"]

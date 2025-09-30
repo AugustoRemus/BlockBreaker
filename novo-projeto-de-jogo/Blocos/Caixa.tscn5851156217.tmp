@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=3 uid="uid://3feieucapg6y"]
+
+[ext_resource type="Script" uid="uid://bva6xhqikxxfx" path="res://Blocos/BolaManager.gd" id="1_dqgup"]
+[ext_resource type="Texture2D" uid="uid://cagg4abg1srv8" path="res://sprite/bloco 0.png" id="1_p2e61"]
+[ext_resource type="Script" uid="uid://cbtwwc1lju2dn" path="res://Blocos/clicação.gd" id="2_b0i1j"]
+[ext_resource type="Script" uid="uid://dhnscolg0ngsh" path="res://Blocos/vida.gd" id="3_jupsf"]
+[ext_resource type="Script" uid="uid://d12hccop4lsvr" path="res://Blocos/sons.gd" id="4_d760c"]
+[ext_resource type="PackedScene" uid="uid://pb11wtln8gx1" path="res://Blocos/somBola/BarulhoBola.tscn" id="5_scd2b"]
+[ext_resource type="AudioStream" uid="uid://rhv1g78tpmfj" path="res://Blocos/somMorte/morte1.mp3" id="6_3avk4"]
+[ext_resource type="AudioStream" uid="uid://8tgohlj56coc" path="res://Blocos/somMorte/morte2.mp3" id="7_dqgup"]
+[ext_resource type="AudioStream" uid="uid://ctx6mfmp1pq36" path="res://Blocos/somMorte/morte3.mp3" id="8_hjk5g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0i1j"]
+size = Vector2(16, 16)
+
+[node name="Caixa" type="RigidBody2D"]
+script = ExtResource("1_dqgup")
+
+[node name="colisao" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b0i1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p2e61")
+
+[node name="areaClicada" type="Area2D" parent="."]
+script = ExtResource("2_b0i1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaClicada"]
+shape = SubResource("RectangleShape2D_b0i1j")
+
+[node name="labelVida" type="Label" parent="."]
+offset_left = -2.0
+offset_top = -6.0
+offset_right = 11.0
+offset_bottom = 17.0
+scale = Vector2(0.5, 0.5)
+text = "1"
+
+[node name="vida" type="Node" parent="." node_paths=PackedStringArray("labelVida")]
+script = ExtResource("3_jupsf")
+labelVida = NodePath("../labelVida")
+
+[node name="Sons" type="Node" parent="."]
+script = ExtResource("4_d760c")
+barulhoDano = ExtResource("5_scd2b")
+barulhosDeMorte = Array[AudioStreamMP3]([ExtResource("6_3avk4"), ExtResource("7_dqgup"), ExtResource("8_hjk5g")])
+
+[node name="barulhoDaMorte" type="AudioStreamPlayer2D" parent="Sons"]
+
+[connection signal="clicado" from="areaClicada" to="vida" method="_on_area_clicada_clicado"]
+[connection signal="input_event" from="areaClicada" to="areaClicada" method="_on_input_event"]
+[connection signal="dano" from="vida" to="Sons" method="_on_vida_dano"]
+[connection signal="morri" from="vida" to="Sons" method="_on_vida_morri"]

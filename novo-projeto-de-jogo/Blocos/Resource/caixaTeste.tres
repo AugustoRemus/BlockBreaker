@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Caixa" load_steps=4 format=3 uid="uid://cwbl1bkqmvsqp"]
+
+[ext_resource type="Script" uid="uid://pegeedns34ni" path="res://Blocos/Resource/ResourceCaixa.gd" id="1_virbt"]
+[ext_resource type="Texture2D" uid="uid://cehs83y4bvstd" path="res://sprite/particula1.png" id="1_xy2je"]
+[ext_resource type="Texture2D" uid="uid://b3vgoou8elb1m" path="res://sprite/bloco 1.png" id="2_jx2g2"]
+
+[resource]
+script = ExtResource("1_virbt")
+vida = 10.0
+peso = 4.0
+tamanho = 2
+pontos = 71
+sprite = ExtResource("2_jx2g2")
+particulasExplisao = ExtResource("1_xy2je")
+metadata/_custom_type_script = "uid://pegeedns34ni"

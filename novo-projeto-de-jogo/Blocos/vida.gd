@@ -6,6 +6,8 @@ var vida: float = 10
 var vidaAtual : float
 var _danoPlayer : float 
 
+var vivo = true
+
 signal dano()
 signal morri()
 
@@ -15,15 +17,17 @@ func setVida(_vida: float):
 	_attVidaLabel()
 	
 func getDamange(_dano: float):
-	vidaAtual = vidaAtual - _dano
+	if vivo:
+		vidaAtual = vidaAtual - _dano
 
-	if vidaAtual > 0:
-		_attVidaLabel()
-		dano.emit()
-	elif vidaAtual <= 0:
-		labelVida.text = ""
-		morri.emit()
-	
+		if vidaAtual > 0:
+			_attVidaLabel()
+			dano.emit()
+		elif vidaAtual <= 0:
+			vivo = false
+			labelVida.text = ""
+			morri.emit()
+		
 
 #pra caso de problemas de performace chamar so quado ele upa
 func _setDanoPlayer():

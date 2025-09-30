@@ -8,9 +8,9 @@ extends Node
 
 #barulhos som
 func _criarSomDano():
-	var newBarulho = barulhoDano.instantiate()
-	newBarulho.position =  caixa.position
-	caixa.add_child(newBarulho)
+	var _newBarulho = barulhoDano.instantiate()
+	_newBarulho.position =  caixa.position
+	get_tree().root.add_child(_newBarulho)
 
 
 func _on_vida_dano() -> void:
@@ -22,7 +22,8 @@ func _on_vida_dano() -> void:
 func _barulhoDeMorte():
 	var _newBarulho = barulhoMorte.instantiate()
 	_newBarulho.position =  caixa.position
-	caixa.add_child(_newBarulho)
+	get_tree().root.add_child(_newBarulho)
+
 	
 	
 

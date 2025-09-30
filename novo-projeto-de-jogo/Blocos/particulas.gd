@@ -18,8 +18,8 @@ func _on_vida_dano() -> void:
 	
 	var _newParticula = particulasGerado.instantiate()
 	_newParticula.texture = spriteParticulas
-	_newParticula.position = position
-	add_child(_newParticula)
+	_newParticula.position = global_position
+	get_tree().root.add_child(_newParticula)
 	_newParticula.amount = _newParticula.amount * ScaleTeste
 	_newParticula.emitting = true
 
@@ -27,8 +27,8 @@ func _on_vida_dano() -> void:
 func _on_vida_morri() -> void:
 	var _newParticula = particulasMortes.instantiate()
 	_newParticula.texture = spriteParticulas
-	_newParticula.position = position
-	add_child(_newParticula)
+	_newParticula.position = global_position
+	get_tree().root.add_child(_newParticula)
 	
 	_newParticula.amount = _newParticula.amount * ScaleTeste
 	_newParticula.emitting = true

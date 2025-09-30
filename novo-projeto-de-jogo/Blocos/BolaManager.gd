@@ -41,3 +41,11 @@ func _setarTamanhos(_listaAlterar):
 func getDamage(_dano: float):
 	vidaNodo.getDamange(_dano)
 	
+
+func _sumir():
+	queue_free()
+	
+
+
+func _on_morte_handler_sumir() -> void:
+	_sumir()

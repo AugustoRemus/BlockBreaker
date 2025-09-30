@@ -77,4 +77,5 @@ script = ExtResource("11_e88gi")
 [connection signal="morri" from="vida" to="Sons" method="_on_vida_morri"]
 [connection signal="morri" from="vida" to="particulas" method="_on_vida_morri"]
 [connection signal="morri" from="vida" to="morteHandler" method="_on_vida_morri"]
+[connection signal="sumir" from="morteHandler" to="." method="_on_morte_handler_sumir"]
 [connection signal="timeout" from="morteHandler/timerQueueFree" to="morteHandler" method="_on_timer_queue_free_timeout"]

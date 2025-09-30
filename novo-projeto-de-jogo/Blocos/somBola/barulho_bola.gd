@@ -15,5 +15,6 @@ func _ready() -> void:
 	play()
 
 
-func _on_despawn_timeout() -> void:
+
+func _on_finished() -> void:
 	queue_free()

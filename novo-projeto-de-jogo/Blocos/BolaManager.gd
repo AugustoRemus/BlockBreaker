@@ -19,9 +19,6 @@ extends RigidBody2D
 @export var vidaNodo: Node 
 
 
-@export var player: Node2D
-
-
 signal morri()
 
 #se pa trocar por um init
@@ -37,11 +34,11 @@ func _ready() -> void:
 	
 	
 
-func setCaixa(caixaBase: Caixa, _player: Node2D):
+func setCaixa(caixaBase: Caixa):
 	
 	#caixa e players passados na hora q começa o jogo
 	CaixaResource = caixaBase.duplicate()
-	player = _player
+
 	
 	_setarNodos()
 	var listaAlterar = [colisao, sprite,area_clicada]
@@ -61,7 +58,7 @@ func _setarNodos():
 	
 	##setando nodos
 	#morte
-	morte_handler._setarMorteHandler(CaixaResource.pontos,player)
+	morte_handler._setarMorteHandler(CaixaResource.pontos,CaixaResource.moedas)
 	#particulas
 	var _vetc = Vector2(CaixaResource.tamanho,CaixaResource.tamanho)
 	particulas.setParticulas(CaixaResource.particulasExplisao,_vetc)

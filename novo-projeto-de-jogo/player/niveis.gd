@@ -13,9 +13,8 @@ func _getXP(_tanto: int):
 	
 	xp += (_tanto)
 	
-	while xp >= xpNescessario[nivelAtual]:
+	while xp >= nivelAtual * 10:
 		nivelAtual += 1
-		xp -= xpNescessario[nivelAtual]
-		print("lvl up")
-		print(nivelAtual)
+		xp -= nivelAtual * 10
 		lvlUP.emit(nivelAtual)
+		print("upei")

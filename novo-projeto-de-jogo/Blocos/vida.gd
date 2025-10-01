@@ -31,11 +31,11 @@ func getDamange(_dano: float):
 
 #pra caso de problemas de performace chamar so quado ele upa
 func _setDanoPlayer():
-	_danoPlayer = Player.danoPlayer
+	_danoPlayer = Player.playerClickForca
 	
 
 func _on_area_clicada_clicado() -> void:
-	getDamange(Player.danoPlayer)
+	getDamange(Player.playerClickForca)
 
 
 func _attVidaLabel():

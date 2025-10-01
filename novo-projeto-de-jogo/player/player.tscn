@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgfx2e30q58cc"]
+[gd_scene load_steps=4 format=3 uid="uid://cgfx2e30q58cc"]
 
 [ext_resource type="Script" uid="uid://hnagk6n6db65" path="res://player/Player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://cf04nk41ks2le" path="res://player/niveis.gd" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://crop8ri7hhu1" path="res://player/money_manager.gd" id="3_g1dw6"]
 
 [node name="Player" type="Node2D" groups=["Player"]]
 script = ExtResource("1_oul6g")
 
 [node name="NivelManager" type="Node" parent="."]
 script = ExtResource("2_rkbax")
+
+[node name="moneyManager" type="Node" parent="."]
+script = ExtResource("3_g1dw6")
 
 [connection signal="lvlUP" from="NivelManager" to="." method="_LVL_Up"]

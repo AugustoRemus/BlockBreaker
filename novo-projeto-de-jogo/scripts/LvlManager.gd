@@ -1,28 +1,31 @@
 extends Node2D
-@export var player: Node2D
+
 @export var caixasSpawnaveis: Array[Caixa]
 
 @export var YPos: float = -200
 @export var minXPos: float = -200
 @export var maxXPos: float = 200
 
+
 const CAIXA = preload("uid://3feieucapg6y")
 
-var caixasSpawnadas: int = 0
+
+#qutans caixas estao no cenario
+var caixasSpawnadasVivas: int = 0
+#quantas caixas ja foram spawnadas
+var totalCaixasSpawnadas: int = 0
+#quantas caixas ja morreram
+var caixasMortas: int = 0
+#maximo de caixas na areana de uma vez
+var maxCaixasSpawnadas: int = 1
 
 
 func _ready() -> void:
-	_spawnCaixaRandom()
-	pass
-
-
-
-func _spawnCaixaRandom():
 	
-	var _caixaRamdom = caixasSpawnaveis.pick_random()
-	var _randPos = _getRandomPos()
-	spawnCaixa(_caixaRamdom,_randPos)
-	
+	#inicia a fila
+	_spawnNextCaixa()
+
+
 func _getRandomPos() ->Vector2:
 	var _retorno = Vector2(0,0)
 	_retorno.y = YPos
@@ -35,7 +38,7 @@ func spawnCaixa(_caixaR: Caixa,_pos:Vector2):
 	
 	var _newCaixa = CAIXA.instantiate()
 	
-	_newCaixa.setCaixa(_caixaR,player)
+	_newCaixa.setCaixa(_caixaR)
 	
 	_newCaixa.position = _pos
 	
@@ -43,9 +46,30 @@ func spawnCaixa(_caixaR: Caixa,_pos:Vector2):
 
 	add_child(_newCaixa)
 	
-	caixasSpawnadas += 1
+	caixasSpawnadasVivas += 1
+
+
+func _spawnCaixaRandom():
 	
+	var _caixaRamdom = caixasSpawnaveis.pick_random()
+	var _randPos = _getRandomPos()
+	spawnCaixa(_caixaRamdom,_randPos)
 	
 
 func caixaMorreu() ->void:
-	caixasSpawnadas -=1
+	caixasSpawnadasVivas -=1
+	caixasMortas += 1
+	
+	if caixasMortas == caixasSpawnaveis.size():
+		print("terminou nivel!")
+	
+	elif !caixasSpawnadasVivas >= caixasSpawnaveis.size():
+		_spawnNextCaixa()
+	else:
+		#espera matar todas
+		pass
+		
+func _spawnNextCaixa():
+	
+	spawnCaixa(caixasSpawnaveis[totalCaixasSpawnadas],_getRandomPos())
+	totalCaixasSpawnadas += 1

@@ -1,26 +1,52 @@
 extends Node2D
-
+##nodos
 @onready var nivel_manager: Node = $NivelManager
-
-var multXP: float = 1
-
-var danoPlayer: float = 1
-var playerInpulso: float = 500
+@onready var money_manager: Node = $moneyManager
 
 
-func getXP(_tanto:int):
+##status
+
+@export var playerClickForca: float = 1
+
+@export var playermultXP: float = 1
+
+@export var playerTempoExtra: float = 0
+
+@export var playerInpulso: float = 500
+
+@export var playerGoldExtra: int = 0
+
+@export var playervarmaxCaixasSpawnadas: int = 1
+
+
+
+
+
+
+
+func getLoot(_tanto:int, _quantMoedas: int):
 	if nivel_manager:
-		nivel_manager._getXP(_tanto * multXP)
-	else:
-		print("sou apenas um script")
+		nivel_manager._getXP(_tanto * playermultXP)
+	
+	attDinheiro(_quantMoedas)
+	
 	
 #atualiza todos os status dos nodos
 
 func _attStatus():
 	pass
 	
-	
-
 #upou de nivel
 func _LVL_Up(lvl: int) -> void:
-	danoPlayer += 1
+	playerClickForca += 1
+
+
+
+func getMoney(_quant: int) -> bool:
+	if _quant > money_manager.dinheiro:
+		return false
+	return true
+	
+
+func attDinheiro(_quant: int) -> void:
+	money_manager.attDinheiro(_quant)

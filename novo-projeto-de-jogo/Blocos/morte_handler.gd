@@ -7,17 +7,17 @@ extends Node
 @onready var timer_queue_free: Timer = $timerQueueFree
 
 var pontosDado: int = 0
-var praQuemDarOXP: Node2D
+var moedasDadas: int = 0
 
 signal sumir()
 
-func _setarMorteHandler(_pontos: int, _player:Node2D):
+func _setarMorteHandler(_pontos: int, _moedas: int) -> void:
 	pontosDado = _pontos
-	praQuemDarOXP = _player
+	moedasDadas = _moedas
 
 func _on_vida_morri() -> void:
 	
-	praQuemDarOXP.getXP(pontosDado)
+	Player.getLoot(pontosDado,moedasDadas)
 	caixa.queue_free()
 	pass
 	

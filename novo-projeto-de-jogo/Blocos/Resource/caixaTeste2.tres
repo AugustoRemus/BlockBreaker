@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_60rxj")
-vida = 100.0
+vida = 1.0
 peso = 1.0
 pontos = 71
 elasticidade = 0.5

@@ -11,7 +11,7 @@ func jogar_aleatorio():
 	var direcao = Vector2(randf_range(-1.0, 1.0), -1).normalized()
 
 	# força de empurrão
-	caixa.apply_impulse(direcao * (intensidade + GameData.playerInpulso))
+	caixa.apply_impulse(direcao * (intensidade + Player.playerInpulso))
 
 	# rotação aleatória
 	var torque = randf_range(-300.0, 300.0)

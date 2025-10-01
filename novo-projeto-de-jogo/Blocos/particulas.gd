@@ -40,5 +40,5 @@ func _on_batida_handler_criar_particulas(_posicao: Vector2) -> void:
 	_newParticula.texture = spriteParticulas
 	_newParticula.position = _posicao
 	get_tree().root.add_child(_newParticula)
-	_newParticula.amount = _newParticula.amount * ScaleTeste
+	_newParticula.amount = (_newParticula.amount * ScaleTeste)/2
 	_newParticula.emitting = true

@@ -22,6 +22,12 @@ buses/default_bus_layout=""
 [autoload]
 
 GameData="*res://game_data.gd"
+Player="*res://player/Player.gd"
+
+[global_group]
+
+Player="jogador"
+Caixa=""
 
 [rendering]
 

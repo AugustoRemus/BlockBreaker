@@ -20,7 +20,7 @@ bounce = 0.11
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0i1j"]
 size = Vector2(16, 16)
 
-[node name="Caixa" type="RigidBody2D" node_paths=PackedStringArray("sprite", "colisao")]
+[node name="Caixa" type="RigidBody2D" node_paths=PackedStringArray("sprite", "colisao", "area_clicada", "particulas", "morte_handler", "rag_dol", "vidaNodo") groups=["Caixa"]]
 scale = Vector2(3.395, 3.395)
 physics_material_override = SubResource("PhysicsMaterial_e88gi")
 can_sleep = false
@@ -29,6 +29,11 @@ max_contacts_reported = 5
 script = ExtResource("1_dqgup")
 sprite = NodePath("Sprite")
 colisao = NodePath("colisao")
+area_clicada = NodePath("areaClicada")
+particulas = NodePath("particulas")
+morte_handler = NodePath("morteHandler")
+rag_dol = NodePath("ragDol")
+vidaNodo = NodePath("vida")
 
 [node name="colisao" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_b0i1j")
@@ -95,10 +100,10 @@ one_shot = true
 [connection signal="input_event" from="areaClicada" to="areaClicada" method="_on_input_event"]
 [connection signal="dano" from="vida" to="Sons" method="_on_vida_dano"]
 [connection signal="dano" from="vida" to="particulas" method="_on_vida_dano"]
+[connection signal="morri" from="vida" to="." method="_morri"]
 [connection signal="morri" from="vida" to="Sons" method="_on_vida_morri"]
 [connection signal="morri" from="vida" to="particulas" method="_on_vida_morri"]
 [connection signal="morri" from="vida" to="morteHandler" method="_on_vida_morri"]
-[connection signal="sumir" from="morteHandler" to="." method="_on_morte_handler_sumir"]
 [connection signal="timeout" from="morteHandler/timerQueueFree" to="morteHandler" method="_on_timer_queue_free_timeout"]
 [connection signal="criarParticulas" from="batidaHandler" to="Sons" method="_on_batida_handler_criar_particulas"]
 [connection signal="criarParticulas" from="batidaHandler" to="particulas" method="_on_batida_handler_criar_particulas"]

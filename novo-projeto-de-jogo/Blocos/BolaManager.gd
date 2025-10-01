@@ -14,6 +14,8 @@ extends RigidBody2D
 
 @onready var morte_handler: Node = $morteHandler
 
+@onready var rag_dol: Node = $ragDol
+
 #nodos base
 @onready var vidaNodo: Node = $vida
 
@@ -27,10 +29,16 @@ func _ready() -> void:
 	
 func _setarNodos():
 	morte_handler._setarPontos(CaixaResource.pontos)
-	particulas.setParticulas(CaixaResource.particulasExplisao,Vector2(CaixaResource.tamanho,CaixaResource.tamanho))
-	gravity_scale = CaixaResource.peso
+	var _vetc = Vector2(CaixaResource.tamanho,CaixaResource.tamanho)
+	particulas.setParticulas(CaixaResource.particulasExplisao,_vetc)
+	mass = CaixaResource.peso
 	vidaNodo.setVida(CaixaResource.vida)
 	sprite.texture = CaixaResource.sprite
+	rag_dol.setIntensidade(CaixaResource.forcaClick)
+	
+	var _newPhysicsMaterial = PhysicsMaterial.new()
+	_newPhysicsMaterial.bounce = CaixaResource.elasticidade
+	physics_material_override = _newPhysicsMaterial
 
 func _setarTamanhos(_listaAlterar):
 	var _newScale = Vector2(CaixaResource.tamanho,CaixaResource.tamanho)

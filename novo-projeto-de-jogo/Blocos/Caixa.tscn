@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://3feieucapg6y"]
+[gd_scene load_steps=16 format=3 uid="uid://3feieucapg6y"]
 
 [ext_resource type="Script" uid="uid://bva6xhqikxxfx" path="res://Blocos/BolaManager.gd" id="1_dqgup"]
 [ext_resource type="Texture2D" uid="uid://cagg4abg1srv8" path="res://sprite/bloco 0.png" id="1_p2e61"]
@@ -11,12 +11,21 @@
 [ext_resource type="PackedScene" uid="uid://bxsolbcha7rvn" path="res://Blocos/teste/particulas_morte.tscn" id="10_e88gi"]
 [ext_resource type="Script" uid="uid://dhy3lrr3fllsj" path="res://Blocos/particulas.gd" id="10_rwgl2"]
 [ext_resource type="Script" uid="uid://daqq1p8nj2s3m" path="res://Blocos/morte_handler.gd" id="11_e88gi"]
+[ext_resource type="Script" uid="uid://d225jot6tc3jo" path="res://Blocos/rag_dol.gd" id="12_qp0pu"]
+[ext_resource type="Script" uid="uid://cqxrs5y8g2vvv" path="res://Blocos/batida_handler.gd" id="13_cy0im"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e88gi"]
+bounce = 0.11
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0i1j"]
 size = Vector2(16, 16)
 
 [node name="Caixa" type="RigidBody2D" node_paths=PackedStringArray("sprite", "colisao")]
 scale = Vector2(3.395, 3.395)
+physics_material_override = SubResource("PhysicsMaterial_e88gi")
+can_sleep = false
+contact_monitor = true
+max_contacts_reported = 5
 script = ExtResource("1_dqgup")
 sprite = NodePath("Sprite")
 colisao = NodePath("colisao")
@@ -70,7 +79,19 @@ script = ExtResource("11_e88gi")
 
 [node name="timerQueueFree" type="Timer" parent="morteHandler"]
 
+[node name="ragDol" type="Node" parent="."]
+script = ExtResource("12_qp0pu")
+
+[node name="batidaHandler" type="Node" parent="."]
+script = ExtResource("13_cy0im")
+
+[node name="couldownSom" type="Timer" parent="batidaHandler"]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="body_entered" from="." to="batidaHandler" method="_on_caixa_body_entered"]
 [connection signal="clicado" from="areaClicada" to="vida" method="_on_area_clicada_clicado"]
+[connection signal="clicado" from="areaClicada" to="ragDol" method="_on_area_clicada_clicado"]
 [connection signal="input_event" from="areaClicada" to="areaClicada" method="_on_input_event"]
 [connection signal="dano" from="vida" to="Sons" method="_on_vida_dano"]
 [connection signal="dano" from="vida" to="particulas" method="_on_vida_dano"]
@@ -79,3 +100,6 @@ script = ExtResource("11_e88gi")
 [connection signal="morri" from="vida" to="morteHandler" method="_on_vida_morri"]
 [connection signal="sumir" from="morteHandler" to="." method="_on_morte_handler_sumir"]
 [connection signal="timeout" from="morteHandler/timerQueueFree" to="morteHandler" method="_on_timer_queue_free_timeout"]
+[connection signal="criarParticulas" from="batidaHandler" to="Sons" method="_on_batida_handler_criar_particulas"]
+[connection signal="criarParticulas" from="batidaHandler" to="particulas" method="_on_batida_handler_criar_particulas"]
+[connection signal="timeout" from="batidaHandler/couldownSom" to="batidaHandler" method="_on_couldown_som_timeout"]

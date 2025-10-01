@@ -6,10 +6,11 @@
 
 [resource]
 script = ExtResource("1_virbt")
-vida = 10.0
-peso = 4.0
+vida = 100.0
+peso = 2.0
 tamanho = 2
 pontos = 71
+elasticidade = 0.2
 sprite = ExtResource("2_jx2g2")
 particulasExplisao = ExtResource("1_xy2je")
 metadata/_custom_type_script = "uid://pegeedns34ni"

@@ -30,3 +30,7 @@ func _barulhoDeMorte():
 
 func _on_vida_morri() -> void:
 	_barulhoDeMorte()
+
+
+func _on_batida_handler_criar_particulas(_posicao: Vector2) -> void:
+	_criarSomDano()

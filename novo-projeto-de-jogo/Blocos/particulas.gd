@@ -32,3 +32,13 @@ func _on_vida_morri() -> void:
 	
 	_newParticula.amount = _newParticula.amount * ScaleTeste
 	_newParticula.emitting = true
+	
+
+
+func _on_batida_handler_criar_particulas(_posicao: Vector2) -> void:
+	var _newParticula = particulasGerado.instantiate()
+	_newParticula.texture = spriteParticulas
+	_newParticula.position = _posicao
+	get_tree().root.add_child(_newParticula)
+	_newParticula.amount = _newParticula.amount * ScaleTeste
+	_newParticula.emitting = true

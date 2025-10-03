@@ -25,6 +25,7 @@ signal morri()
 #para debug na fase
 
 func _ready() -> void:
+	#print("spawnei")
 	if CaixaResource:
 		_setarNodos()
 		var listaAlterar = [colisao, sprite,area_clicada]

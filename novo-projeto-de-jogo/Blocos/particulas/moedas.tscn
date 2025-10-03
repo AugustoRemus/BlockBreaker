@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://uh5jqqtoaefk"]
+
+[ext_resource type="Script" uid="uid://bueom3ldfst4m" path="res://Blocos/particulas/particulasMoedas.gd" id="1_hst2l"]
+
+[node name="Moedas" type="GPUParticles2D"]
+script = ExtResource("1_hst2l")

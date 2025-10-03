@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://c7lq1ffu81bae"]
+[gd_scene load_steps=11 format=4 uid="uid://c7lq1ffu81bae"]
 
 [ext_resource type="Script" uid="uid://3jxnfl3k72th" path="res://scripts/LvlManager.gd" id="1_0cijk"]
 [ext_resource type="Texture2D" uid="uid://clqlpksji5b1u" path="res://sprite/parede.png" id="2_j2ut6"]
@@ -6,6 +6,8 @@
 [ext_resource type="Resource" uid="uid://bfwvr3k8mr8x4" path="res://Blocos/Resource/caixaTeste2.tres" id="4_ff0xt"]
 [ext_resource type="Resource" uid="uid://cwbl1bkqmvsqp" path="res://Blocos/Resource/caixaTeste.tres" id="5_0cijk"]
 [ext_resource type="PackedScene" uid="uid://cgfx2e30q58cc" path="res://player/player.tscn" id="5_ff0xt"]
+[ext_resource type="Script" uid="uid://b0u38fqvw1vu2" path="res://scripts/wavemaganer.gd" id="7_djk5k"]
+[ext_resource type="Script" uid="uid://dk2d4mjfd1vhl" path="res://scripts/spawn_manager.gd" id="8_sflf3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2ut6"]
 texture = ExtResource("2_j2ut6")
@@ -24,7 +26,6 @@ sources/0 = SubResource("TileSetAtlasSource_j2ut6")
 
 [node name="Principal" type="Node2D"]
 script = ExtResource("1_0cijk")
-caixasSpawnaveis = Array[ExtResource("2_vpl54")]([ExtResource("4_ff0xt"), ExtResource("5_0cijk")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -39,3 +40,18 @@ tile_set = SubResource("TileSet_42xuo")
 
 [node name="Player" parent="." instance=ExtResource("5_ff0xt")]
 position = Vector2(-78, -102)
+
+[node name="wavemaganer" type="Node" parent="."]
+script = ExtResource("7_djk5k")
+
+[node name="spawnManager" type="Node2D" parent="."]
+script = ExtResource("8_sflf3")
+ListaSpawn = Array[ExtResource("2_vpl54")]([ExtResource("4_ff0xt"), ExtResource("5_0cijk"), ExtResource("4_ff0xt"), ExtResource("5_0cijk")])
+
+[node name="Ui" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="Ui"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 114.0
+grow_horizontal = 2

@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://pb11wtln8gx1"]
+[gd_scene load_steps=8 format=3 uid="uid://pb11wtln8gx1"]
 
 [ext_resource type="Script" uid="uid://5bqqvxonvtbn" path="res://Blocos/somBola/barulho_bola.gd" id="1_rxjll"]
 [ext_resource type="AudioStream" uid="uid://bpxu7r48nsb8h" path="res://Blocos/somBola/Som1.mp3" id="2_84g2q"]
 [ext_resource type="AudioStream" uid="uid://b3ght6ndbxn3x" path="res://Blocos/somBola/Record (online-voice-recorder.com).mp3" id="2_yptjy"]
 [ext_resource type="AudioStream" uid="uid://novsaihv0ion" path="res://Blocos/somBola/som2.mp3" id="3_yptjy"]
+[ext_resource type="AudioStream" uid="uid://rhv1g78tpmfj" path="res://Blocos/somMorte/morte1.mp3" id="5_6hytt"]
+[ext_resource type="AudioStream" uid="uid://8tgohlj56coc" path="res://Blocos/somMorte/morte2.mp3" id="6_100t4"]
+[ext_resource type="AudioStream" uid="uid://ctx6mfmp1pq36" path="res://Blocos/somMorte/morte3.mp3" id="7_aer0r"]
 
-[node name="BarulhoBolaDano" type="AudioStreamPlayer2D"]
+[node name="BarulhoBola" type="AudioStreamPlayer2D"]
 pitch_scale = 0.66
 script = ExtResource("1_rxjll")
-sonsPossiveis = Array[AudioStreamMP3]([ExtResource("2_yptjy"), ExtResource("2_84g2q"), ExtResource("3_yptjy")])
+sonsPossiveisDano = Array[AudioStreamMP3]([ExtResource("2_yptjy"), ExtResource("2_84g2q"), ExtResource("3_yptjy")])
+sonsPossiveisMorte = Array[AudioStreamMP3]([ExtResource("5_6hytt"), ExtResource("6_100t4"), ExtResource("7_aer0r")])
 
 [connection signal="finished" from="." to="." method="_on_finished"]

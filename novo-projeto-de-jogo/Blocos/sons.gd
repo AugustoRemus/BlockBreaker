@@ -2,35 +2,34 @@ extends Node
 
 @onready var caixa: RigidBody2D = $".."
 
-@export var barulhoDano: PackedScene
+@export var barulhoBola: PackedScene
 
-@export var barulhoMorte: PackedScene
 
+#0dano 1 morte
 #barulhos som
-func _criarSomDano():
-	var _newBarulho = barulhoDano.instantiate()
-	_newBarulho.position =  caixa.position
+func _criarSom(_volume: float, _tipo: int):
+	var _newBarulho = barulhoBola.instantiate()
 	get_tree().root.add_child(_newBarulho)
+	_newBarulho.position = caixa.position
+	_newBarulho.setarSom(_tipo, _volume)
+
+	
 
 
 func _on_vida_dano() -> void:
-	_criarSomDano()
+	_criarSom(0,0)
 
 
-#barulhos morte
 
-func _barulhoDeMorte():
-	var _newBarulho = barulhoMorte.instantiate()
-	_newBarulho.position =  caixa.position
-	get_tree().root.add_child(_newBarulho)
-
-	
 	
 
 
 func _on_vida_morri() -> void:
-	_barulhoDeMorte()
+	_criarSom(0,1)
 
 
-func _on_batida_handler_criar_particulas(_posicao: Vector2) -> void:
-	_criarSomDano()
+
+
+func _on_batida_handler_criar_som(forca: float) -> void:
+	var vol = lerp(-20.0, 0.0, clamp(forca / 300.0, 0.0, 1.0))
+	_criarSom(vol,0)

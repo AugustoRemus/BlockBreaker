@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://3feieucapg6y"]
+[gd_scene load_steps=15 format=3 uid="uid://3feieucapg6y"]
 
 [ext_resource type="Script" uid="uid://bva6xhqikxxfx" path="res://Blocos/BolaManager.gd" id="1_dqgup"]
 [ext_resource type="Texture2D" uid="uid://cagg4abg1srv8" path="res://sprite/bloco 0.png" id="1_p2e61"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://dhnscolg0ngsh" path="res://Blocos/vida.gd" id="3_jupsf"]
 [ext_resource type="Script" uid="uid://d12hccop4lsvr" path="res://Blocos/sons.gd" id="4_d760c"]
 [ext_resource type="PackedScene" uid="uid://pb11wtln8gx1" path="res://Blocos/somBola/BarulhoBola.tscn" id="5_scd2b"]
-[ext_resource type="PackedScene" uid="uid://bp4q7466jgakd" path="res://Blocos/somMorte/SomMorteCena.tscn" id="7_20grr"]
 [ext_resource type="PackedScene" uid="uid://c2bwbvkwscn1u" path="res://Blocos/teste/particula_cene.tscn" id="9_a1oko"]
 [ext_resource type="PackedScene" uid="uid://bxsolbcha7rvn" path="res://Blocos/teste/particulas_morte.tscn" id="10_e88gi"]
 [ext_resource type="Script" uid="uid://dhy3lrr3fllsj" path="res://Blocos/particulas.gd" id="10_rwgl2"]
@@ -71,8 +70,7 @@ labelVida = NodePath("../labelVida")
 
 [node name="Sons" type="Node" parent="."]
 script = ExtResource("4_d760c")
-barulhoDano = ExtResource("5_scd2b")
-barulhoMorte = ExtResource("7_20grr")
+barulhoBola = ExtResource("5_scd2b")
 
 [node name="particulas" type="Node2D" parent="."]
 script = ExtResource("10_rwgl2")
@@ -107,4 +105,5 @@ one_shot = true
 [connection signal="timeout" from="morteHandler/timerQueueFree" to="morteHandler" method="_on_timer_queue_free_timeout"]
 [connection signal="criarParticulas" from="batidaHandler" to="Sons" method="_on_batida_handler_criar_particulas"]
 [connection signal="criarParticulas" from="batidaHandler" to="particulas" method="_on_batida_handler_criar_particulas"]
+[connection signal="criarSom" from="batidaHandler" to="Sons" method="_on_batida_handler_criar_som"]
 [connection signal="timeout" from="batidaHandler/couldownSom" to="batidaHandler" method="_on_couldown_som_timeout"]

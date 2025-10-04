@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c7lq1ffu81bae"]
+[gd_scene load_steps=12 format=4 uid="uid://c7lq1ffu81bae"]
 
 [ext_resource type="Script" uid="uid://3jxnfl3k72th" path="res://scripts/LvlManager.gd" id="1_0cijk"]
 [ext_resource type="Texture2D" uid="uid://clqlpksji5b1u" path="res://sprite/parede.png" id="2_j2ut6"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cgfx2e30q58cc" path="res://player/player.tscn" id="5_ff0xt"]
 [ext_resource type="Script" uid="uid://b0u38fqvw1vu2" path="res://scripts/wavemaganer.gd" id="7_djk5k"]
 [ext_resource type="Script" uid="uid://dk2d4mjfd1vhl" path="res://scripts/spawn_manager.gd" id="8_sflf3"]
+[ext_resource type="PackedScene" uid="uid://3feieucapg6y" path="res://Blocos/Caixa.tscn" id="8_wgbst"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2ut6"]
 texture = ExtResource("2_j2ut6")
@@ -46,7 +47,7 @@ script = ExtResource("7_djk5k")
 
 [node name="spawnManager" type="Node2D" parent="."]
 script = ExtResource("8_sflf3")
-ListaSpawn = Array[ExtResource("2_vpl54")]([ExtResource("4_ff0xt"), ExtResource("5_0cijk"), ExtResource("4_ff0xt"), ExtResource("5_0cijk")])
+ListaSpawn = Array[ExtResource("2_vpl54")]([ExtResource("4_ff0xt"), ExtResource("5_0cijk"), ExtResource("4_ff0xt"), ExtResource("5_0cijk"), ExtResource("4_ff0xt"), ExtResource("5_0cijk")])
 
 [node name="Ui" type="CanvasLayer" parent="."]
 
@@ -55,3 +56,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 114.0
 grow_horizontal = 2
+
+[node name="Caixa" parent="." instance=ExtResource("8_wgbst")]
+position = Vector2(-176, 78)
+CaixaResource = ExtResource("5_0cijk")

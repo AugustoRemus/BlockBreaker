@@ -1,12 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp4q7466jgakd"]
+[gd_scene load_steps=2 format=3 uid="uid://bp4q7466jgakd"]
 
 [ext_resource type="Script" uid="uid://cuanen3rkyb57" path="res://Blocos/somMorte/som_morte_Script.gd" id="1_g4872"]
-[ext_resource type="AudioStream" uid="uid://rhv1g78tpmfj" path="res://Blocos/somMorte/morte1.mp3" id="2_ydujk"]
-[ext_resource type="AudioStream" uid="uid://8tgohlj56coc" path="res://Blocos/somMorte/morte2.mp3" id="3_1gxsp"]
-[ext_resource type="AudioStream" uid="uid://ctx6mfmp1pq36" path="res://Blocos/somMorte/morte3.mp3" id="4_lasek"]
 
 [node name="SomMorteCena" type="AudioStreamPlayer2D"]
 script = ExtResource("1_g4872")
-barulhosDeMorte = Array[AudioStreamMP3]([ExtResource("2_ydujk"), ExtResource("3_1gxsp"), ExtResource("4_lasek")])
 
 [connection signal="finished" from="." to="." method="_on_finished"]

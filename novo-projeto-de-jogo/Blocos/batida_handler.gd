@@ -16,15 +16,22 @@ func _on_caixa_body_entered(body: Node) -> void:
 	var velocidade = caixa.linear_velocity.length()
 	#print(velocidade)
 	if !batido:
-	
-		criarSom.emit(velocidade)
 		
+
 		batido = true
 		couldown_som.start()
+		
+		criarSom.emit(velocidade)
+		
+		
 		if body is TileMapLayer:
 			criarParticulas.emit(caixa.position)
-		else:
+		elif body.is_in_group("Caixa"):
 			criarParticulas.emit((caixa.position + body.position)/2)
+			if velocidade < 180:
+				if caixa.mass > body.mass:
+					body.getDamage(caixa.mass - body.mass)
+					#print("alguem sofreu dano")
 		
 
 

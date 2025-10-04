@@ -28,8 +28,6 @@ func _on_vida_morri() -> void:
 	_criarSom(0,1)
 
 
-
-
-func _on_batida_handler_criar_som(forca: float) -> void:
+func _on_colisao_handler_criar_som(forca: float) -> void:
 	var vol = lerp(-20.0, 0.0, clamp(forca / 300.0, 0.0, 1.0))
 	_criarSom(vol,0)

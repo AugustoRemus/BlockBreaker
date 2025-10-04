@@ -85,14 +85,14 @@ script = ExtResource("11_e88gi")
 [node name="ragDol" type="Node" parent="."]
 script = ExtResource("12_qp0pu")
 
-[node name="batidaHandler" type="Node" parent="."]
+[node name="ColisaoHandler" type="Node" parent="." groups=["Caixa"]]
 script = ExtResource("13_cy0im")
 
-[node name="couldownSom" type="Timer" parent="batidaHandler"]
+[node name="couldownSom" type="Timer" parent="ColisaoHandler"]
 wait_time = 0.2
 one_shot = true
 
-[connection signal="body_entered" from="." to="batidaHandler" method="_on_caixa_body_entered"]
+[connection signal="body_entered" from="." to="ColisaoHandler" method="_on_caixa_body_entered"]
 [connection signal="clicado" from="areaClicada" to="vida" method="_on_area_clicada_clicado"]
 [connection signal="clicado" from="areaClicada" to="ragDol" method="_on_area_clicada_clicado"]
 [connection signal="input_event" from="areaClicada" to="areaClicada" method="_on_input_event"]
@@ -103,7 +103,8 @@ one_shot = true
 [connection signal="morri" from="vida" to="particulas" method="_on_vida_morri"]
 [connection signal="morri" from="vida" to="morteHandler" method="_on_vida_morri"]
 [connection signal="timeout" from="morteHandler/timerQueueFree" to="morteHandler" method="_on_timer_queue_free_timeout"]
-[connection signal="criarParticulas" from="batidaHandler" to="Sons" method="_on_batida_handler_criar_particulas"]
-[connection signal="criarParticulas" from="batidaHandler" to="particulas" method="_on_batida_handler_criar_particulas"]
-[connection signal="criarSom" from="batidaHandler" to="Sons" method="_on_batida_handler_criar_som"]
-[connection signal="timeout" from="batidaHandler/couldownSom" to="batidaHandler" method="_on_couldown_som_timeout"]
+[connection signal="criarParticulas" from="ColisaoHandler" to="Sons" method="_on_batida_handler_criar_particulas"]
+[connection signal="criarParticulas" from="ColisaoHandler" to="particulas" method="_on_batida_handler_criar_particulas"]
+[connection signal="criarSom" from="ColisaoHandler" to="Sons" method="_on_colisao_handler_criar_som"]
+[connection signal="criarSom" from="ColisaoHandler" to="Sons" method="_on_batida_handler_criar_som"]
+[connection signal="timeout" from="ColisaoHandler/couldownSom" to="ColisaoHandler" method="_on_couldown_som_timeout"]

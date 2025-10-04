@@ -18,6 +18,7 @@ extends RigidBody2D
 #nodos base
 @export var vidaNodo: Node 
 
+#@export var peso: float
 
 signal morri()
 

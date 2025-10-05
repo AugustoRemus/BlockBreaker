@@ -9,7 +9,7 @@ extends Node2D
 
 const CAIXA = preload("uid://3feieucapg6y")
 
-
+signal batalhaVencida()
 
 #quantas caixas ja morreram
 var caixasMortas: int = 0
@@ -17,14 +17,15 @@ var caixasMortas: int = 0
 
 
 func _ready() -> void:
-	startLvl()
+	#iniciar manualmente debug
+	startLvl(ListaSpawn)
 	pass
 	#inicia a fila
 	#_spawnCaixaRandom()
 	
-func startLvl():
+func startLvl(_arrayCaixas):
 	
-	for caixa in ListaSpawn:
+	for caixa in _arrayCaixas:
 		spawnCaixa(caixa, _getRandomPos())
 	
 
@@ -65,5 +66,9 @@ func caixaMorreu() ->void:
 	#_spawnCaixaRandom()
 	
 	if caixasMortas == ListaSpawn.size():
-		print("terminou nivel!")
+		batalhaVencida.emit()
 	
+
+
+func _on_wavemaganer_iniciar_fase(arrayCaixas: Array[Caixa]) -> void:
+	startLvl(arrayCaixas)

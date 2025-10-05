@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cgfx2e30q58cc" path="res://player/player.tscn" id="5_ff0xt"]
 [ext_resource type="Script" uid="uid://b0u38fqvw1vu2" path="res://scripts/wavemaganer.gd" id="7_djk5k"]
 [ext_resource type="Script" uid="uid://dk2d4mjfd1vhl" path="res://scripts/spawn_manager.gd" id="8_sflf3"]
-[ext_resource type="PackedScene" uid="uid://3feieucapg6y" path="res://Blocos/Caixa.tscn" id="8_wgbst"]
+[ext_resource type="PackedScene" uid="uid://cg5p41og0ox0w" path="res://loja/loja.tscn" id="10_wgbst"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2ut6"]
 texture = ExtResource("2_j2ut6")
@@ -44,19 +44,24 @@ position = Vector2(-78, -102)
 
 [node name="wavemaganer" type="Node" parent="."]
 script = ExtResource("7_djk5k")
+ListaSpawn = Array[ExtResource("2_vpl54")]([ExtResource("4_ff0xt"), ExtResource("5_0cijk")])
 
 [node name="spawnManager" type="Node2D" parent="."]
 script = ExtResource("8_sflf3")
-ListaSpawn = Array[ExtResource("2_vpl54")]([ExtResource("4_ff0xt"), ExtResource("5_0cijk"), ExtResource("4_ff0xt"), ExtResource("5_0cijk"), ExtResource("4_ff0xt"), ExtResource("5_0cijk")])
+ListaSpawn = Array[ExtResource("2_vpl54")]([ExtResource("4_ff0xt"), ExtResource("5_0cijk")])
 
 [node name="Ui" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="Ui"]
+visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 114.0
 grow_horizontal = 2
 
-[node name="Caixa" parent="." instance=ExtResource("8_wgbst")]
-position = Vector2(-176, 78)
-CaixaResource = ExtResource("5_0cijk")
+[node name="loja" parent="." instance=ExtResource("10_wgbst")]
+
+[connection signal="iniciarFase" from="wavemaganer" to="spawnManager" method="_on_wavemaganer_iniciar_fase"]
+[connection signal="numFase" from="wavemaganer" to="." method="_on_wavemaganer_num_fase"]
+[connection signal="batalhaVencida" from="spawnManager" to="." method="_on_spawn_manager_batalha_vencida"]
+[connection signal="confirmado" from="loja" to="." method="_on_loja_confirmado"]

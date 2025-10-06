@@ -59,6 +59,17 @@ anchor_right = 1.0
 offset_bottom = 114.0
 grow_horizontal = 2
 
+[node name="waveNumero" type="Label" parent="Ui"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.5
+offset_right = 94.5
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 65
+text = "Wave: 1"
+
 [node name="loja" parent="." instance=ExtResource("10_wgbst")]
 
 [connection signal="iniciarFase" from="wavemaganer" to="spawnManager" method="_on_wavemaganer_iniciar_fase"]

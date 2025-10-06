@@ -13,6 +13,7 @@ signal batalhaVencida()
 
 #quantas caixas ja morreram
 var caixasMortas: int = 0
+var quantCaixas: int = 0
 
 
 
@@ -24,7 +25,8 @@ func _ready() -> void:
 	#_spawnCaixaRandom()
 	
 func startLvl(_arrayCaixas):
-	
+	quantCaixas = _arrayCaixas.size()
+	caixasMortas = 0
 	for caixa in _arrayCaixas:
 		spawnCaixa(caixa, _getRandomPos())
 	
@@ -65,7 +67,7 @@ func caixaMorreu() ->void:
 	
 	#_spawnCaixaRandom()
 	
-	if caixasMortas == ListaSpawn.size():
+	if caixasMortas == quantCaixas:
 		batalhaVencida.emit()
 	
 

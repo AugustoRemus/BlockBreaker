@@ -6,6 +6,8 @@ extends Node2D
 @export var minXPos: float = -200
 @export var maxXPos: float = 200
 
+@onready var tempo_fase: Timer = $"../tempoFase"
+
 
 const CAIXA = preload("uid://3feieucapg6y")
 
@@ -29,6 +31,8 @@ func startLvl(_arrayCaixas):
 	caixasMortas = 0
 	for caixa in _arrayCaixas:
 		spawnCaixa(caixa, _getRandomPos())
+	
+	tempo_fase.start(60 + Player.playerTempoExtra)
 	
 
 

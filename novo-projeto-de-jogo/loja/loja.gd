@@ -7,39 +7,34 @@ extends CanvasLayer
 
 var loja_aberta = false
 
+var upgrades: Array[Control]
+
 signal confirmado()
 
 func _ready() -> void:
-	#abrirLoja()
+	var _upgrades = escolhas.get_children()
+	for up in _upgrades:
+		if up is Control:
+			upgrades.append(up)
+			
+	
 	pass
-	
-func abrirLoja():
-	escolhas.visible = true
-	loja_aberta = true
+
+func mostrarBotao():
+	abrirLoja()
+	abrir_loja.visible = true
 	confirmar.visible = true
-
-
-func _alteraLoja():
-	escolhas.visible = !escolhas.visible
-	loja_aberta = !loja_aberta
-	confirmar.visible = !confirmar.visible
-
-
-func mostrarBotao(_mostar: bool):
-	abrir_loja.visible = _mostar
-	confirmar.visible = _mostar
-	loja_aberta = _mostar
+	
 	
 
-
-func _on_abrir_loja_pressed() -> void:
-	_alteraLoja()
-
-#recebe um resource e faz a parada dele
-func compraFeita():
-	print("upgrade escolhido")
-	
+func abrirLoja():
+	for up in upgrades:
+		up.newUpgrade()
+	escolhas.visible = true
 
 
 func _on_confirmar_pressed() -> void:
+	escolhas.visible = false
+	abrir_loja.visible = false
+	confirmar.visible = false
 	confirmado.emit()

@@ -72,7 +72,10 @@ text = "Wave: 1"
 
 [node name="loja" parent="." instance=ExtResource("10_wgbst")]
 
+[node name="tempoFase" type="Timer" parent="."]
+
 [connection signal="iniciarFase" from="wavemaganer" to="spawnManager" method="_on_wavemaganer_iniciar_fase"]
 [connection signal="numFase" from="wavemaganer" to="." method="_on_wavemaganer_num_fase"]
 [connection signal="batalhaVencida" from="spawnManager" to="." method="_on_spawn_manager_batalha_vencida"]
 [connection signal="confirmado" from="loja" to="." method="_on_loja_confirmado"]
+[connection signal="timeout" from="tempoFase" to="." method="_on_tempo_fase_timeout"]

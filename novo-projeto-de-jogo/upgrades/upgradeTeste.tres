@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="upgrade" load_steps=2 format=3 uid="uid://due7eshwp5wrh"]
+
+[ext_resource type="Script" uid="uid://c0d8l434wp7pb" path="res://upgrades/upgrade.gd" id="1_mh1j4"]
+
+[resource]
+script = ExtResource("1_mh1j4")
+nome = "teste"
+desc = "faz porra nenhuma"
+preco = 10
+raridade = 1
+metadata/_custom_type_script = "uid://c0d8l434wp7pb"

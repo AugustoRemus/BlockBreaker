@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://iqgeb5g6bkrd"]
+[gd_scene load_steps=4 format=3 uid="uid://iqgeb5g6bkrd"]
 
 [ext_resource type="Script" uid="uid://byrf4o8pckyed" path="res://loja/botoes_upgrades.gd" id="1_fpbgf"]
+[ext_resource type="Script" uid="uid://c0d8l434wp7pb" path="res://upgrades/upgrade.gd" id="2_n6qf8"]
+[ext_resource type="Resource" uid="uid://due7eshwp5wrh" path="res://upgrades/upgradeTeste.tres" id="3_iixup"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -8,18 +10,68 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_fpbgf")
+todosUpgrades = Array[ExtResource("2_n6qf8")]([ExtResource("3_iixup")])
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 200.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="nome" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "coisa foda"
+vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="oqueFaz" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "da mais dano"
+horizontal_alignment = 1
+
+[node name="txtPreco" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -41.414993
+offset_right = 20.0
+offset_bottom = -18.414993
+grow_horizontal = 2
+grow_vertical = 0
+text = "Custa:"
+
+[node name="preco" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "5 mil reais"
+horizontal_alignment = 1
+
+[node name="comprar" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -32,6 +84,7 @@ offset_right = 44.5
 offset_bottom = 44.28
 grow_horizontal = 2
 grow_vertical = 0
-text = "Selecionar"
+text = "Comprar
+"
 
-[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/comprar" to="." method="_on_button_pressed"]

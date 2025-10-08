@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="upDano" load_steps=2 format=3 uid="uid://dccwk2jtsgp76"]
+
+[ext_resource type="Script" uid="uid://cvl7temu7o41o" path="res://upgrades/upDano.gd" id="1_n2uhc"]
+
+[resource]
+script = ExtResource("1_n2uhc")
+forca = 1
+nome = "Mais dano"
+desc = "De 1 a mais de dano por click"
+preco = 10
+raridade = 1
+metadata/_custom_type_script = "uid://cvl7temu7o41o"

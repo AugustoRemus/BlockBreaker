@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="upMaisLoja" load_steps=2 format=3 uid="uid://ia4lutrsij0"]
+
+[ext_resource type="Script" uid="uid://byx6xs3pntgej" path="res://upgrades/upLojaMais.gd" id="1_iyqyt"]
+
+[resource]
+script = ExtResource("1_iyqyt")
+nome = "Mais um slot Loja"
+desc = "Adiciona um novo slot a loja, INFINITAMENTE"
+preco = 1
+raridade = 10
+metadata/_custom_type_script = "uid://byx6xs3pntgej"

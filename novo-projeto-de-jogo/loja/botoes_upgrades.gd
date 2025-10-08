@@ -21,6 +21,7 @@ func newUpgrade():
 	_setarBotao()
 	
 func _setarBotao():
+	
 	panel.size = Vector2(100,200)
 	#melhorar e botar raridade
 	upgradeSelecionado = todosUpgrades.pick_random()
@@ -38,6 +39,8 @@ func _on_button_pressed() -> void:
 	if Player.getMoney(valor):
 		Player.attDinheiro(-valor)
 		upgradeSelecionado.escolhido()
+		
+		_setarBotao()
 	else:
 		print("ta liso chefe")
 	

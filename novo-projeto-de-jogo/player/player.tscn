@@ -14,4 +14,16 @@ script = ExtResource("2_rkbax")
 [node name="moneyManager" type="Node" parent="."]
 script = ExtResource("3_g1dw6")
 
+[node name="Moedas" type="CanvasLayer" parent="."]
+
+[node name="moedas" type="Label" parent="Moedas"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "dinheiro = 0"
+
 [connection signal="lvlUP" from="NivelManager" to="." method="_LVL_Up"]

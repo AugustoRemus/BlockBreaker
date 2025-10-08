@@ -1,6 +1,7 @@
 extends CanvasLayer
 
-@onready var escolhas: GridContainer = $Escolhas
+#@onready var escolhas: GridContainer = $Escolhas
+@onready var escolhas: GridContainer = $CenterContainer/Escolhas
 
 @onready var abrir_loja: Button = $abrirLoja
 @onready var confirmar: Button = $confirmar
@@ -30,11 +31,13 @@ func mostrarBotao():
 func abrirLoja():
 	for up in upgrades:
 		up.newUpgrade()
+	escolhas.botarBotoes()
 	escolhas.visible = true
 
 
 func _on_confirmar_pressed() -> void:
 	escolhas.visible = false
+	escolhas.matarBotoes()
 	abrir_loja.visible = false
 	confirmar.visible = false
 	confirmado.emit()

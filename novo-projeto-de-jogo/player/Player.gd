@@ -16,7 +16,7 @@ extends Node2D
 
 @export var playerGoldExtra: int = 0
 
-@export var playervarmaxCaixasSpawnadas: int = 1
+@export var playerQuantItemLoja = 3
 
 
 

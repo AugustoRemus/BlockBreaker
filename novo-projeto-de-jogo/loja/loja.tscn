@@ -1,32 +1,29 @@
 [gd_scene load_steps=3 format=3 uid="uid://cg5p41og0ox0w"]
 
 [ext_resource type="Script" uid="uid://cfucx6sunblah" path="res://loja/loja.gd" id="1_vreun"]
-[ext_resource type="PackedScene" uid="uid://iqgeb5g6bkrd" path="res://loja/botoesUpgrades.tscn" id="2_i411f"]
+[ext_resource type="Script" uid="uid://px5yrvdrg8mu" path="res://loja/escolhas.gd" id="2_rfpgk"]
 
 [node name="loja" type="CanvasLayer"]
 script = ExtResource("1_vreun")
 
-[node name="Escolhas" type="GridContainer" parent="."]
-visible = false
+[node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -200.0
-offset_right = 200.0
-offset_bottom = 40.0
+offset_left = -75.0
+offset_top = 74.0
+offset_right = -35.0
+offset_bottom = 113.999985
 grow_horizontal = 2
-size_flags_horizontal = 4
+
+[node name="Escolhas" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
 theme_override_constants/h_separation = 150
-columns = 3
-
-[node name="Control" parent="Escolhas" instance=ExtResource("2_i411f")]
-layout_mode = 2
-
-[node name="Control2" parent="Escolhas" instance=ExtResource("2_i411f")]
-layout_mode = 2
-
-[node name="Control3" parent="Escolhas" instance=ExtResource("2_i411f")]
-layout_mode = 2
+theme_override_constants/v_separation = 250
+columns = 7
+script = ExtResource("2_rfpgk")
 
 [node name="abrirLoja" type="Button" parent="."]
 visible = false
@@ -45,8 +42,5 @@ grow_horizontal = 0
 size_flags_horizontal = 8
 text = "Proxima fase"
 
-[connection signal="escolhido" from="Escolhas/Control" to="." method="compraFeita"]
-[connection signal="escolhido" from="Escolhas/Control2" to="." method="compraFeita"]
-[connection signal="escolhido" from="Escolhas/Control3" to="." method="compraFeita"]
 [connection signal="pressed" from="abrirLoja" to="." method="_on_abrir_loja_pressed"]
 [connection signal="pressed" from="confirmar" to="." method="_on_confirmar_pressed"]

@@ -8,7 +8,7 @@
 script = ExtResource("1_60rxj")
 vida = 10.0
 peso = 1.0
-moedas = 5
+moedas = 10
 pontos = 2
 elasticidade = 0.5
 sprite = ExtResource("2_mo3jq")

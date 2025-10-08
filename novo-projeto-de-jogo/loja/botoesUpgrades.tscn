@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://byrf4o8pckyed" path="res://loja/botoes_upgrades.gd" id="1_fpbgf"]
 [ext_resource type="Script" uid="uid://c0d8l434wp7pb" path="res://upgrades/upgrade.gd" id="2_n6qf8"]
-[ext_resource type="Resource" uid="uid://due7eshwp5wrh" path="res://upgrades/upgradeTeste.tres" id="3_iixup"]
+[ext_resource type="Resource" uid="uid://ia4lutrsij0" path="res://upgrades/upLoja.tres" id="7_32742"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_fpbgf")
-todosUpgrades = Array[ExtResource("2_n6qf8")]([ExtResource("3_iixup")])
+todosUpgrades = Array[ExtResource("2_n6qf8")]([ExtResource("7_32742")])
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
